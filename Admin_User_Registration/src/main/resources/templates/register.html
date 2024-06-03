@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" th:href="@{../css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <div class="message" th:if="${message != null}">
+        [[${message}]]
+    </div>
+    <h2>Registration Form</h2>
+    <form
+            th:action="@{/registration}"
+            method="post"
+            role="form"
+            th:object="${user}"
+            id="registrationForm"
+    >
+        <div class="form-group">
+            <label for="fullname">Fullname:</label>
+            <input th:field="*{fullname}" type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input th:field="*{dob}" type="date" id="dob" name="dob" required>
+        </div>
+
+        <div class="form-group">
+            <label for="job">Job:</label>
+            <input th:field="*{job}" type="text" id="job" name="job" placeholder="Enter your job" required>
+        </div>
+
+        <div class="form-group">
+            <label for="level">Level:</label>
+            <input th:field="*{level}" type="text" id="level" name="level" placeholder="Enter your level" required>
+        </div>
+
+        <div class="form-group">
+            <label for="desire">Desire:</label>
+            <input th:field="*{desire}" type="text" id="desire" name="desire" placeholder="Enter your desire" required>
+        </div>
+
+        <input type="submit" value="Register">
+    </form>
+    <!-- Add a link to the login page -->
+    <div>
+        <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+    </div>
+</div>
+
+<script>
+    // Set the deadline for registration (in milliseconds since epoch)
+    var deadline = new Date('2024-07-20T23:59:59').getTime();
+
+    // Function to check if the current time is after the deadline
+    function checkDeadline() {
+        var now = new Date().getTime();
+        if (now > deadline) {
+            // If past the deadline, disable the registration form
+            document.getElementById("registrationForm").style.display = "none";
+            // Optionally, you can display a message informing users that registration is closed
+            alert("Registration is closed. The deadline has passed.");
+        }
+    }
+
+    // Call the function to check the deadline when the page loads
+    window.onload = function() {
+        checkDeadline();
+    };
+</script>
+
+</body>
+</html>
