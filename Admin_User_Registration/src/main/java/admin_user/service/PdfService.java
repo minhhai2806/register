@@ -19,8 +19,8 @@ public class PdfService {
         try {
 
             PdfPTable table = new PdfPTable(7);
-            table.setWidthPercentage(60);
-            table.setWidths(new int[]{1, 2, 5,2,2,2,2});
+            table.setWidthPercentage(100);
+            table.setWidths(new int[]{3, 4, 10,5,4,4,4});
 
             Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 
@@ -73,6 +73,33 @@ public class PdfService {
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setPaddingRight(5);
                 table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(user.getDob())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(user.getJob())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(user.getLevel())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(user.getDesire())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+
+
+
             }
 
             PdfWriter.getInstance(document, out);

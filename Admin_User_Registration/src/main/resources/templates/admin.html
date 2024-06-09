@@ -101,22 +101,20 @@
             <th>Job</th>
             <th>Level</th>
             <th>Desire</th>
-            <th>Actions</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${allUsers}">
             <td th:text="${user.id}"></td>
-            <td contenteditable="true" onblur="updateUser(this, ${user.id}, 'fullname')" th:text="${user.fullname}"></td>
-            <td contenteditable="true" onblur="updateUser(this, ${user.id}, 'email')" th:text="${user.email}"></td>
-            <td contenteditable="true" onblur="updateUser(this, ${user.id}, 'role')" th:text="${user.role}"></td>
+            <td  th:text="${user.fullname}"></td>
+            <td th:text="${user.email}"></td>
+            <td  th:text="${user.role}"></td>
             <td th:text="${user.dob}"></td>
             <td th:text="${user.job}"></td>
             <td th:text="${user.level}"></td>
             <td th:text="${user.desire}"></td>
-            <td>
-                <button onclick="deleteUser(${user.id})">Delete</button>
-            </td>
+
         </tr>
         </tbody>
     </table>

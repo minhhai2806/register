@@ -30,23 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// Trong UserService.java
-	@Override
-	public User updateUser(Long id, User updatedUser) {
-		Optional<User> optionalUser = userRepository.findById(id);
-		if (!optionalUser.isPresent()) {
-			return null;
-		}
-		User user = optionalUser.get();
-		user.setEmail(updatedUser.getEmail());
-		user.setPassword(updatedUser.getPassword());
-		user.setRole(updatedUser.getRole());
-		user.setFullname(updatedUser.getFullname());
-		return userRepository.save(user);
-	}
-	@Override
-	public void deleteUser(Long id) {
-		userRepository.deleteById(id);
-	}
+
+
 
 
 
